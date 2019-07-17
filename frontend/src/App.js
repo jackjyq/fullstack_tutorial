@@ -27,15 +27,13 @@ handleChange(event) {
     const inputValue = event.target.value;
     let state = this.state;
     state[inputId] = inputValue;
-    //  I can do this because I have carefully selected "inputId" 
-    //  so that they are the same with keys in this.state
     this.setState(state);
   }
 
 
   handleClick(event) {
     const serverUrl = "http://localhost:5000/keys";
-    const debugUrl = "http://localhost:5000/debug"
+    const debugUrl = "http://localhost:5000/debug";
     const buttonId = event.target.id;
     let state = this.state
     // ######################### create name ###########################
@@ -72,6 +70,7 @@ handleChange(event) {
         this.setState(state);
       });    
     }
+
     // ########################## read name ############################
     else if (buttonId === "read") {
       fetch(serverUrl + "/" + state["key"], {
@@ -106,6 +105,7 @@ handleChange(event) {
         this.setState(state);
       });    
     }
+
     // ######################### update name ###########################
     else if (buttonId === "update") {
       fetch(serverUrl + "/" +  state["key"], { 
@@ -139,6 +139,7 @@ handleChange(event) {
         this.setState(state);
       });    
     }
+
     // ######################### delete name ###########################
     else if (buttonId === "delete") {
       fetch(serverUrl + "/" + state["key"], { 
@@ -168,6 +169,7 @@ handleChange(event) {
         this.setState(state);
       });    
     }
+
     // ######################### debug method ###########################
     else if (buttonId === "debug") {
       fetch(debugUrl, { 
