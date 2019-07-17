@@ -3,7 +3,7 @@
 # Date: 2019-07
 # Description:
 #   an simple flask backend
-from flask import Flask, json, jsonify
+from flask import Flask, json, jsonify, request
 from flask_cors import CORS
 
 
@@ -13,20 +13,89 @@ app = Flask(__name__)
 # https://flask-cors.readthedocs.io/en/latest/
 CORS(app)   
 # use a python dictionary to simulate database
-#   {
-#       1: {"firstName": "Jack", "lastName": "Jiang"},
-#       5: {"firstName": "Strong", "lastName": "Dinosaur"},
-#       12: {"firstName": "Black", "lastName": "Cat"}
-#   }
-database = {}
+database = {
+        "1": {"firstName": "Jack", "lastName": "Jiang"},
+        "5": {"firstName": "Strong", "lastName": "Dinosaur"},
+        "12": {"firstName": "Black", "lastName": "Cat"}
+        }
+
+
+############################# Debug Method #############################
+# print database
+@app.route('/debug/print_database', methods = ["GET"])
+def print_database():
+    print("\n#########################################################")
+    for key, item in database.items():
+        print(key, end=": ")
+        print(item)
+    return jsonify({}), 200
 
 
 ##########################  API Implementation #########################
-@app.route('/names/', methods = ["POST"])
-def get_name():
-    # Create Name
-    
-    return jsonify(data), 200
+# https://github.com/Jiangyiqun/fullstack_tutorial/tree/master/documentation
+# create name
+@app.route('/keys/', methods = ["POST"])
+def create_name():
+    data_json = request.data
+    data_dict = json.loads(data_json)
+    # bad request
+    try:
+        key = data_dict["key"]
+        first_name = data_dict["firstName"]
+        last_name = data_dict["firstName"]
+    except KeyError:
+        return jsonify({"errorMsg": "bad request"}), 400
+    # conflict
+    if key in database:
+        return jsonify({"key": key, "errorMsg": "conflict"}), 409
+    # succeed
+    database[key] = {"firstName": first_name, "lastName": last_name}
+    return jsonify({"key": key, "firstName": first_name, "lastName": last_name}), 200
+
+
+# read name
+@app.route('/keys/<key>', methods = ["GET"])
+def read_name(key):
+    # not found
+    if key not in database:
+        return jsonify({"key": key, "errorMsg": "not found"}), 404
+    # succeed
+    first_name = database[key]["firstName"]
+    last_name = database[key]["firstName"]
+    return jsonify({"key": key, "firstName": first_name, "lastName": last_name}), 200
+
+
+# update name
+@app.route('/keys/<key>', methods = ["PUT"])
+def update_name(key):
+    data_json = request.data
+    data_dict = json.loads(data_json)
+    # bad request
+    try:
+        first_name = data_dict["firstName"]
+        last_name = data_dict["firstName"]
+    except KeyError:
+        return jsonify({"errorMsg": "bad request"}), 400
+    # not found
+    if key not in database:
+        return jsonify({"key": key, "errorMsg": "not found"}), 404
+    # succeed
+    database[key]["firstName"] = first_name
+    database[key]["firstName"] = last_name
+    return jsonify({"key": key, "firstName": first_name, "lastName": last_name}), 200
+
+
+# delete name
+@app.route('/keys/<key>', methods = ["DELETE"])
+def delete_name(key):
+    # not found
+    if key not in database:
+        return jsonify({"key": key, "errorMsg": "not found"}), 404
+    # succeed
+    first_name = database[key]["firstName"]
+    last_name = database[key]["firstName"]
+    del database[key]
+    return jsonify({"key": key, "firstName": first_name, "lastName": last_name}), 200
 
 
 ############################ Main Function #############################

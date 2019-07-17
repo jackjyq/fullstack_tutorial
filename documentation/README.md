@@ -18,13 +18,13 @@
 
 ### Send
 
-- URL: @server/names/
+- URL: @server/keys/
 - HTTP Method: POST
-- Content: 
+- Body: 
 
 ```json
 {
-    "id": @id,
+    "key": @key,
     "firstName": "Jack",
     "LastName": "Jiang"
 }
@@ -32,28 +32,39 @@
 
 ### Response
 
-**Succeed**
+**succeed**
 
 - HTTP Status Code: 200
-- Content:
+- Body:
 
 ```json
 {
-    "id": @id,
+    "key": @key,
     "firstName": "Jack",
     "LastName": "Jiang"
 }
 ```
 
-**Fail**
+**conflict**
 
 - HTTP Status Code: 409
-- Content:
+- Body:
 
 ```json
 {
-    "id": @id,
-    "errorMsg": "id already exist"
+    "key": @key,
+    "errorMsg": "conflict"
+}
+```
+
+**bad request**
+
+- HTTP Status Code: 400
+- Body:
+
+```json
+{
+    "errorMsg": "bad request"
 }
 ```
 
@@ -63,46 +74,46 @@
 
 ### Send
 
-- URL: @server/names/@id
+- URL: @server/keys/@key
 - HTTP Method: GET
-- Content: Null
+- Body: Null
 
 ### Response
 
-**Succeed**
+**succeed**
 
 - HTTP Status Code: 200
-- Content:
+- Body:
 
 ```json
 {
-    "id": @id,
+    "key": @key,
     "firstName": "Jack",
     "LastName": "Jiang"
 }
 ```
 
-**Fail**
+**not found**
 
 - HTTP Status Code: 404
-- Content:
+- Body:
 
 ```json
 {
-    "id": @id,
-    "errorMsg": "id not found"
+    "key": @key,
+    "errorMsg": "not found"
 }
 ```
 
 
 
-## Update
+## Update Name
 
 ### Send
 
-- URL: @server/names/@id
+- URL: @server/keys/@key
 - HTTP Method: PUT
-- Content: 
+- Body: 
 
 ```json
 {
@@ -113,28 +124,39 @@
 
 ### Response
 
-**Succeed**
+**succeed**
 
 - HTTP Status Code: 200
-- Content:
+- Body:
 
 ```json
 {
-    "id": @id,
+    "key": @key,
     "firstName": "Jack",
     "LastName": "Jiang"
 }
 ```
 
-**Fail**
+**not found**
 
 - HTTP Status Code: 404
-- Content:
+- Body:
 
 ```json
 {
-    "id": @id,
-    "errorMsg": "id not found"
+    "key": @key,
+    "errorMsg": "key not found"
+}
+```
+
+**bad request**
+
+- HTTP Status Code: 400
+- Body:
+
+```json
+{
+    "errorMsg": "bad request"
 }
 ```
 
@@ -145,20 +167,20 @@
 
 ### Send
 
-- URL: @server/names/@id
+- URL: @server/keys/@key
 - HTTP Method: DELETE
-- Content: Null
+- Body: Null
 
 ### Response
 
 **Succeed**
 
 - HTTP Status Code: 200
-- Content:
+- Body:
 
 ```json
 {
-    "id": @id,
+    "key": @key,
     "firstName": "Jack",
     "LastName": "Jiang"
 }
@@ -167,11 +189,32 @@
 **Fail**
 
 - HTTP Status Code: 404
-- Content:
+- Body:
 
 ```json
 {
-    "id": @id,
-    "errorMsg": "id not found"
+    "key": @key,
+    "errorMsg": "key not found"
 }
+```
+
+
+
+## Debug Method
+
+It will print out the whole database on back-end terminal
+
+- URL: @server/debug/print_database
+- HTTP Method: GET
+- Body: Null
+
+### Response
+
+**succeed**
+
+- HTTP Status Code: 200
+- Body:
+
+```json
+{}
 ```
