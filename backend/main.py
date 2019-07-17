@@ -5,7 +5,7 @@
 #   an simple flask backend
 from flask import Flask, json, jsonify, request
 from flask_cors import CORS
-from database_dictionary.model import Model
+from dbms.dict_db.model import Model
 
 ############################ Initialization ############################
 app = Flask(__name__)
