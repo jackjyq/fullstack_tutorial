@@ -34,7 +34,7 @@
 
 **succeed**
 
-- HTTP Status Code: 200
+- HTTP Status Code: 201
 - Body:
 
 ```json
@@ -202,19 +202,8 @@
 
 ## Debug Method
 
-It will print out the whole database on back-end terminal
+database will be printed out on back-end terminal
 
-- URL: @server/debug/print_database
+- URL: @server/debug/
 - HTTP Method: GET
 - Body: Null
-
-### Response
-
-**succeed**
-
-- HTTP Status Code: 200
-- Body:
-
-```json
-{}
-```
