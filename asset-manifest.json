@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/fullstack_tutorial/static/css/main.2cce8147.chunk.css",
+    "main.js": "/fullstack_tutorial/static/js/main.4565ab02.chunk.js",
+    "main.js.map": "/fullstack_tutorial/static/js/main.4565ab02.chunk.js.map",
+    "runtime~main.js": "/fullstack_tutorial/static/js/runtime~main.e079487a.js",
+    "runtime~main.js.map": "/fullstack_tutorial/static/js/runtime~main.e079487a.js.map",
+    "static/css/2.266e55a5.chunk.css": "/fullstack_tutorial/static/css/2.266e55a5.chunk.css",
+    "static/js/2.97ea9d12.chunk.js": "/fullstack_tutorial/static/js/2.97ea9d12.chunk.js",
+    "static/js/2.97ea9d12.chunk.js.map": "/fullstack_tutorial/static/js/2.97ea9d12.chunk.js.map",
+    "index.html": "/fullstack_tutorial/index.html",
+    "precache-manifest.1d10d973212312f48f7e4a36f1e4cc5a.js": "/fullstack_tutorial/precache-manifest.1d10d973212312f48f7e4a36f1e4cc5a.js",
+    "service-worker.js": "/fullstack_tutorial/service-worker.js",
+    "static/css/2.266e55a5.chunk.css.map": "/fullstack_tutorial/static/css/2.266e55a5.chunk.css.map",
+    "static/css/main.2cce8147.chunk.css.map": "/fullstack_tutorial/static/css/main.2cce8147.chunk.css.map"
+  }
+}
