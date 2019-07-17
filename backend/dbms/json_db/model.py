@@ -2,15 +2,24 @@
 # Author: Jack Jiang
 # Date: 2019-07
 # Description:
-#   an database implementated by python dictionary
-
+#   an database implementated by json in file system
+import json
+from os import path
 
 #################### Database CRUD Implementation ######################
 class Model():
     database = {}
-    
-    def __init__(self, database={}):
+    location = ""
+
+    def __init__(self, database={}, location="database.json"):
+        self.location = path.dirname(__file__) + "/" + location
         self.database = database
+        # the only case which need to read file
+        if (path.isfile(self.location) and len(database) == 0):
+            with open(self.location, "r") as data_file:
+                self.database = json.load(data_file)
+        # then write to the disk
+        self.save()
 
 
     ############################ create item ###########################
@@ -30,6 +39,7 @@ class Model():
             return False
         # succeed
         self.database[key] = value
+        self.save()
         return True
 
 
@@ -64,6 +74,7 @@ class Model():
             return False
         # succeed
         self.database[key] = value
+        self.save()
         return True
 
 
@@ -76,6 +87,7 @@ class Model():
             return False
         # succeed
         del self.database[key]
+        self.save()
         return True
 
 
@@ -83,7 +95,16 @@ class Model():
     def debug(self):
         # return = database if implemented
         #          None if not implemented
-        return self.database
+        with open(self.location, "r") as data_file:
+            data_dict = json.load(data_file)
+        return data_dict
+
+
+    ############################ save method ###########################
+    def save(self):
+        # save self.database to self.location
+        with open(self.location, "w+") as data_file:
+            data_file.write(json.dumps(self.database, indent=2))
 
 
 ############################ Test Function #############################
@@ -93,7 +114,8 @@ if __name__ == "__main__":
             "5": {"firstName": "Strong", "lastName": "Dinosaur"},
             "12": {"firstName": "Black", "lastName": "Cat"}
             })
-    print(model.create("7",{"firstName": "Jack", "lastName": "Jiang"}))
-    print(model.database)
-    print(model.create("7",{"firstName": "Jack", "lastName": "Jiang"}))
-    print(model.database)
+    print(model.debug())
+    # print(model.create("7",{"firstName": "Jack", "lastName": "Jiang"}))
+    # print(model.database)
+    # print(model.create("7",{"firstName": "Jack", "lastName": "Jiang"}))
+    # print(model.database)

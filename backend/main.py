@@ -5,7 +5,8 @@
 #   an simple flask backend
 from flask import Flask, json, jsonify, request
 from flask_cors import CORS
-from dbms.dict_db.model import Model
+# from dbms.dict_db.model import Model
+from dbms.json_db.model import Model
 
 ############################ Initialization ############################
 app = Flask(__name__)
@@ -76,9 +77,14 @@ def delete_name(key):
 # print database
 @app.route('/debug', methods = ["GET"])
 def print_database():
-    print("\n#########################################################")
-    print(model.database)
-    return jsonify(model.database), 200
+    database = model.debug()
+    if (database is None):
+        print("\n########### Debug Method Not Implemented #############")
+        return jsonify({"errorMsg": "Debug Method Not Implemented"}), 200
+    else:
+        print("\n######################################################")
+        print(database)
+        return jsonify(database), 200
 
 
 ############################ Main Function #############################
