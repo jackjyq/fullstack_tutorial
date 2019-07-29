@@ -7,6 +7,8 @@ In this fullstack tutorial, I will implement a simple CRUD App, including:
 - A [Frontend](https://jiangyiqun.github.io/fullstack_tutorial/) using [JavaScript(React)](https://reactjs.org/)
 - A [Backend](./docs/README.md) using [Python(Flask)](https://flask.palletsprojects.com/en/1.1.x/)
 
+___
+
 ## Create Frontend from scratch
 
 ### Prerequisite
@@ -20,6 +22,8 @@ npx create-react-app frontend     # create basic react app
 cd frontend
 npm install --save reactstrap     # install essitial modules
 ```
+
+___
 
 ## Create Backend from scratch
 
