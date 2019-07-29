@@ -142,7 +142,11 @@ add_main_py() {
 
 
 ########################### main function ############################
-if [ $1 == "install" ]
+if [ $# = 0 ]
+then
+    show_usage
+    exit 1
+elif [ $1 == "install" ]
 then
     if [ $# = 1 ]
     then
