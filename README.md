@@ -21,7 +21,7 @@ npm install --save reactstrap react react-dom	# install essitial modules
 
 
 
-## Create [back-end](./documentation/README.md) from scratch
+## Create [back-end](./docs/README.md) from scratch
 
 ### prerequisite
 

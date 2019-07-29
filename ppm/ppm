@@ -1,0 +1,114 @@
+#!/bin/bash
+# Author: Jack Jiang
+# URL: https://github.com/Jiangyiqun/fullstack_tutorial/
+########################### helper function ############################
+show_usage() {
+    # show useage and exit
+    echo "USAGE: ppm <command>"
+    echo
+    echo "ppm install"
+    echo "    Install Packages from package.txt"
+    echo "ppm install <pkg1> <pkg2> ... <pkgn>"
+    echo "    Install package <pkg1> <pkg2> ... <pkgn> and add to package.txt"
+    echo "ppm start"
+    echo "    Start main.py in current directory"
+    echo "ppm start <py>"
+    echo "    start python file <py> in currrent directory"
+}
+
+
+install() {
+    # Install Packages from package.txt
+    if [ -e "package.txt" ]
+    then
+        if ! [ -e "./python_modules/bin/activate" ]
+        then 
+            # first time build
+            # add .gitignore and create python_module
+            python3 -m venv python_modules &&
+            if ! [ -e ".gitignore" ]
+            then
+                echo "/python_modules" >> .gitignore
+                echo "/__pycache__" >> .gitignore
+            fi
+        fi
+        source "./python_modules/bin/activate" &&
+        pip install --upgrade pip &&
+        python3 -m pip install -r package.txt
+    else
+        echo "package.txt does not exist"
+        exit 1
+    fi
+}
+
+
+install_pkgs() {
+    # Install package <pkgs> and add to package.txt
+    pkgs=$*
+    if [ -e "package.txt" ]
+    then
+        if ! [ -e "./python_modules/bin/activate" ]
+        then 
+            echo "./python_modules/bin/activate does not exist"
+            echo "try ppm install first"
+            exit 1
+        fi
+        source "./python_modules/bin/activate" &&
+        pip install --upgrade pip &&
+        for pkg in $pkgs
+        do
+            pip install $pkg
+        done
+        python -m pip freeze > package.txt
+    else
+        echo "package.txt does not exist"
+        exit 1
+    fi
+}
+
+
+start() {
+    # Start <py> in current directory
+    py=$1
+    if [ -e "package.txt" ]
+    then
+        if ! [ -e "./python_modules/bin/activate" ]
+        then 
+            echo "./python_modules/bin/activate does not exist"
+            echo "try ppm install first"
+            exit 1
+        fi
+        source "./python_modules/bin/activate" &&
+        python $1
+    else
+        echo "package.txt does not exist"
+        exit 1
+    fi
+}
+
+########################### main function ############################
+if [ $1 == "install" ]
+then
+    if [ $# = 1 ]
+    then
+        install
+    else
+        install_pkgs ${*:2}  # all args except the first one
+    fi
+elif [ $1 == "start" ]
+then
+    if [ $# = 1 ]
+    then
+        start "main.py"
+    elif [ $# = 2 ]
+    then
+        start $2
+    else
+        show_usage
+        exit 1
+    fi
+else
+    show_usage
+    exit 1
+fi
+exit 0
