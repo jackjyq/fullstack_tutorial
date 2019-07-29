@@ -12,7 +12,7 @@ python3 -m pip install -r package.txt   # install python modules from package.tx
 deactivate                              # deactivate python environment
 ```
 
-**Alternatively, you could use [ppm](../ppm) (no available for Windows)**
+**Alternatively, you could use [ppm](https://github.com/Jiangyiqun/fullstack_tutorial/tree/master/ppm) (no available for Windows)**
 
 ```shell
 ppm install
@@ -26,7 +26,7 @@ python main.py                          # run back-end server
 deactivate                              # deactivate python environment
 ```
 
-**Alternatively, you could use [ppm](../ppm) (no available for Windows)**
+**Alternatively, you could use [ppm](https://github.com/Jiangyiqun/fullstack_tutorial/tree/master/ppm) (no available for Windows)**
 
 ```shell
 ppm start
@@ -41,7 +41,7 @@ python -m pip freeze > package.txt		# save new-package to package.txt
 deactivate                              # deactivate python environment
 ```
 
-**Alternatively, you could use [ppm](../ppm) (no available for Windows)**
+**Alternatively, you could use [ppm](https://github.com/Jiangyiqun/fullstack_tutorial/tree/master/ppm) (no available for Windows)**
 
 ```shell
 ppm new-package

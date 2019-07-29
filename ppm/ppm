@@ -1,6 +1,6 @@
 #!/bin/bash
 # Author: Jack Jiang
-# URL: https://github.com/Jiangyiqun/fullstack_tutorial/
+# URL: https://github.com/Jiangyiqun/fullstack_tutorial/tree/master/ppm
 # Description: 
 # ppm is a wrapper of python3, venv and pip which makes it easier to use.
 
