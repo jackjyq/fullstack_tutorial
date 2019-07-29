@@ -1,7 +1,9 @@
 # DBMS interface
 
-\- Author: Jack Jiang
-\- Date: Jul. 2019
+- Author: Jack Jiang
+- Date: Jul. 2019
+
+A DBMS interface, the implementation is not important for this tutorial.
 
 ### Usage
 

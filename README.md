@@ -1,33 +1,33 @@
-# Full- Stack Tutorial
+# FullStack Tutorial
 
-\- Author: Jack Jiang
+- Author: Jack Jiang
+- Date: Jul. 2019
 
-\- Date: Jul. 2019
+In this fullstack tutorial, I will implement a simple CRUD App, including:
+- A [Frontend](https://jiangyiqun.github.io/fullstack_tutorial/) using [JavaScript(React)](https://reactjs.org/)
+- A [Backend](./docs/README.md) using [Python(Flask)](https://flask.palletsprojects.com/en/1.1.x/)
 
-
-
-## Create [front-end](https://jiangyiqun.github.io/fullstack_tutorial/) from scratch
+## Create Frontend from scratch
 
 ### Prerequisite
 
 - [Node.js](https://nodejs.org)
 
-### Create React Project
+### Create React App
 
 ```shell
-npx create-react-app frontend           		# create basic react app
-npm install --save reactstrap react react-dom	# install essitial modules
+npx create-react-app frontend     # create basic react app
+cd frontend
+npm install --save reactstrap     # install essitial modules
 ```
 
+## Create Backend from scratch
 
-
-## Create [back-end](./docs/README.md) from scratch
-
-### prerequisite
+### Prerequisite
 
 - [Anaconda (Python 3)](https://www.anaconda.com/distribution/#download-section)
 
-### create Flask Project
+### Create Flask App
 
 ```shell
 mkdir backend
@@ -39,3 +39,10 @@ python -m pip freeze > package.txt		# save dependencies to package.txt
 deactivate                              # deactivate python environment
 ```
 
+**Alternatively, you could use [ppm](../ppm) (no available for Windows)**
+
+```shell
+ppm create-flask-app backend     # create basic flask app
+cd backend
+ppm install flask-cors           # install essitial modules
+```

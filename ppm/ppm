@@ -1,6 +1,9 @@
 #!/bin/bash
 # Author: Jack Jiang
 # URL: https://github.com/Jiangyiqun/fullstack_tutorial/
+# Description: 
+# ppm is a wrapper of python3, venv and pip which makes it easier to use.
+
 ########################### helper function ############################
 show_usage() {
     # show useage and exit
@@ -14,6 +17,8 @@ show_usage() {
     echo "    Start main.py in current directory"
     echo "ppm start <py>"
     echo "    start python file <py> in currrent directory"
+    echo "ppm create-flask-app <backend>"
+    echo "    create a flask app in <backend> folder"
 }
 
 
@@ -23,14 +28,8 @@ install() {
     then
         if ! [ -e "./python_modules/bin/activate" ]
         then 
-            # first time build
-            # add .gitignore and create python_module
-            python3 -m venv python_modules &&
-            if ! [ -e ".gitignore" ]
-            then
-                echo "/python_modules" >> .gitignore
-                echo "/__pycache__" >> .gitignore
-            fi
+            # create python_module
+            python3 -m venv python_modules
         fi
         source "./python_modules/bin/activate" &&
         pip install --upgrade pip &&
@@ -86,23 +85,93 @@ start() {
     fi
 }
 
+
+create_flask_app() {
+    folder=$1
+    # create and cd into folder
+    if ! [ -d $folder ]
+    then
+        mkdir $folder
+    fi
+    cd $folder
+    if [ -d "python_module" -o -e "package.txt" -o -e "main.py" ]
+    then
+        # can not create flask app
+        echo "The directory $folder contains files that could conflict"
+        echo "Try using a new directory name"
+        exit 1
+    else
+        # install packages
+        python3 -m venv python_modules &&
+        source ./python_modules/bin/activate &&
+        pip install --upgrade pip &&
+        pip install flask &&
+        python -m pip freeze > package.txt &&
+        # add main.py
+        add_main_py
+        # add .gitignore
+        if ! [ -e ".gitignore" ]
+        then
+            echo "/python_modules" >> .gitignore
+            echo "/__pycache__" >> .gitignore
+        fi
+        # show messeage
+        echo
+        echo "I suggest that you begin by typing:"
+        echo
+        echo "cd $folder"
+        echo "ppm start"
+        echo
+    fi
+}
+
+
+add_main_py() {
+    echo "from flask import Flask" >> main.py
+    echo >> main.py
+    echo "app = Flask(__name__)" >> main.py
+    echo >> main.py
+    echo "@app.route('/', methods = [\"GET\"])" >> main.py
+    echo "def hello():" >> main.py
+    echo "    return '<a href=\"https://github.com/Jiangyiqun/fullstack_tutorial\">\\" >> main.py
+    echo "            This Server is generate by ppm create-flask-app </a>', 200" >> main.py
+    echo >> main.py
+    echo "if __name__ == \"__main__\":" >> main.py
+    echo "    app.run(host = 'localhost',port=5000, debug=True)" >> main.py
+}
+
+
 ########################### main function ############################
 if [ $1 == "install" ]
 then
     if [ $# = 1 ]
     then
         install
+        exit 0
     else
         install_pkgs ${*:2}  # all args except the first one
+        exit 0
     fi
 elif [ $1 == "start" ]
 then
     if [ $# = 1 ]
     then
         start "main.py"
+        exit 0
     elif [ $# = 2 ]
     then
         start $2
+        exit 0
+    else
+        show_usage
+        exit 1
+    fi
+elif [ $1 == "create-flask-app" ]
+then
+    if [ $# = 2 ]
+    then
+        create_flask_app $2
+        exit 0
     else
         show_usage
         exit 1
@@ -111,4 +180,3 @@ else
     show_usage
     exit 1
 fi
-exit 0

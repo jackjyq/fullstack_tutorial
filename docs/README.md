@@ -3,16 +3,17 @@
 - Author: Jack Jiang
 - Date: Jul. 2019
 
-### [Summary of HTTP Methods for RESTful APIs](https://restfulapi.net/http-methods/)
+## Overview
 
-| **HTTP Method** | CRUD Function |
-| --------------- | ------------- |
-| POST            | Create        |
-| GET             | Read          |
-| PUT             | Update        |
-| DELETE          | Delete        |
+| **CRUD**      | **HTTP Method** | **URL**           | 
+| ------------- | --------------- | ----------------- | 
+| Create        | POST            | @server/keys/     | 
+| Read          | GET             | @server/keys/@key | 
+| Update        | PUT             | @server/keys/@key | 
+| Delete        | DELETE          | @server/keys/@key | 
+| Debug         | GET             | @server/debug/    | 
 
-
+___
 
 ## Create Name
 
@@ -68,7 +69,7 @@
 }
 ```
 
-
+___
 
 ## Read Name
 
@@ -105,7 +106,7 @@
 }
 ```
 
-
+___
 
 ## Update Name
 
@@ -160,10 +161,9 @@
 }
 ```
 
+___
 
-
-
-## Delete
+## Delete Name
 
 ### Send
 
@@ -198,7 +198,7 @@
 }
 ```
 
-
+___
 
 ## Debug Method
 

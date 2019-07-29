@@ -1,43 +1,23 @@
 # ppm Documentation
 
-ppm is a wrapper of python3, venv and pip which makes it easier to use.
+- Author: Jack Jiang
+- Date: Jul. 2019
 
-## prerequisite
+ppm is a wrapper of python3, venv and pip which syntax is similar to npm.
 
-- [Anaconda (Python 3)](https://www.anaconda.com/distribution/#download-section)
-- Copy ppm to the root of backend folder
-- Give excute permission to ppm: `chmod +x ppm`
+## Setup
 
-## Example
+To setup, you need to copy ppm to a system PATH
 
-### Setup
+1. type `echo $PATH`
+2. copy ppm to one of a system PATH
 
-```shell
-./ppm install
-```
+for Ubuntu, just run `./install`. After that, you could be able to run `ppm <command>`
 
-which is equivalent to 
+**Alternatively, if you do not want to install ppm to system PATH, you could:**
 
-```shell
-python3 -m venv python_modules          # create python environment
-source ./python_modules/bin/activate    # activate python environment
-python3 -m pip install -r package.txt   # install python modules from package.txt
-deactivate                              # deactivate python environment
-```
-
-## Run
-
-```shell
-./ppm start
-```
-
-which is equivalent to 
-
-```shell 
-source ./python_modules/bin/activate    # activate python environment
-python main.py                          # run back-end server
-deactivate                              # deactivate python environment
-```
+- always keep ppm in current directory
+- and use `./ppm <command>`
 
 ## Full Usage
 
@@ -50,4 +30,21 @@ ppm start
     Start main.py in current directory
 ppm start <py>
     start python file <py> in currrent directory
+ppm create-flask-app <backend>
+    create a flask app in <backend> folder
 ```
+
+## FAQ
+
+- Problem: `permission denied`
+- Soluton: `chmod +x ppm`
+
+## Prerequisite
+
+- [Anaconda (Python 3)](https://www.anaconda.com/distribution/#download-section)
+
+## System Compatibility
+
+- Linux: Yes
+- Windows: No
+- Mac: Not Sure
