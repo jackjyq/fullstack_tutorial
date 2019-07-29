@@ -3,55 +3,77 @@
 - Author: Jack Jiang
 - Date: Jul. 2019
 
-A DBMS interface, the implementation is not important for this tutorial.
+DBMS interface. The implementation is not important for this tutorial.
 
-### Usage
+## Overview
+
+| **model_name** | **Implementation**         |
+| -------------- | -------------------------- |
+| dict_db        | Python dictionary          |
+| json_db        | File System (Json Format)  |
+
+## Usage
 
 ```python
-from model_name import Model
+from dbms.model_name.model import Model
 model = Model()
+
+value = model.method(args)
 ```
 
-## Create
+## Method
+
+### Create
 
 ```python
-def create(self, key, value):
-    # key = "1"
-    # value = {"firstName": "Jack", "lastName": "Jiang"}
-    # return = True
-    #          False
+def create(self, key: str, value: dict) -> bool:
+    '''
+    key = "1"
+    value = {"firstName": "Jack", "lastName": "Jiang"}
+    return = True when succeed
+             False when faild
+    '''
 ```
 
-## Read
+### Read
 ```python
-def read(self, key):
-    # key = "1"
-    # reutrn value = {"firstName": "Jack", "lastName": "Jiang"}
-    #                None
+def read(self, key: str) -> dict:
+    '''
+    key = "1"
+    reutrn = {"firstName": "Jack", "lastName": "Jiang"}
+             None when key does not exist
+    '''
 ```
 
-## Updata
+### Update
 
 ```python
-def update(self, key, value):
-    # key = "1"
-    # value = {"firstName": "Jack", "lastName": "Jiang"}
-    # return = True
-    #          False
-    # invalid value
+def update(self, key: str, value: dict) -> bool:
+    '''
+    key = "1"
+    value = {"firstName": "Jack", "lastName": "Jiang"}
+    return = True when succeed
+             False when faild
+    '''
 ```
 
-## Delete
+### Delete
+
 ```python
-def delete(self, key):
-    # key = "1"
-    # return = True 
-    #          False
+def delete(self, key: str) -> bool:
+    '''
+    key = "1"
+    return = True when succeed
+             False when key does not exist
+    '''
 ```
 
-## Debug
+### Debug
+
 ```python
-def debug(self):
-    # return = database if implemented
-    #          None if not implemented
+def debug(self) -> dict:
+    '''
+    return = database if implemented
+             None if not implemented
+    '''
 ```

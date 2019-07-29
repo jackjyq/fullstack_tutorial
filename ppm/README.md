@@ -3,7 +3,7 @@
 - Author: Jack Jiang
 - Date: Jul. 2019
 
-ppm is a wrapper of python3, venv and pip which syntax is similar to npm.
+ppm is a wrapper of python3, venv and pip which syntax is similar to npm. the implementation is not important for this tutorial.
 
 ## Setup
 
