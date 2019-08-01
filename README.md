@@ -43,7 +43,7 @@ python -m pip freeze > package.txt		# save dependencies to package.txt
 deactivate                              # deactivate python environment
 ```
 
-**Alternatively, you could use [ppm](https://github.com/Jiangyiqun/fullstack_tutorial/tree/master/ppm) (no available for Windows)**
+**Alternatively, you could use [ppm](https://github.com/Jiangyiqun/ppm) (no available for Windows)**
 
 ```shell
 ppm create-flask-app backend     # create basic flask app
