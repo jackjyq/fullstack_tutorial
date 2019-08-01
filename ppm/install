@@ -1,9 +1,0 @@
-#!/bin/bash
-# Author: Jack Jiang
-# URL: https://github.com/Jiangyiqun/fullstack_tutorial/
-# Description: 
-# install ppm to system path
-echo "installing ppm..."
-chmod +x ppm
-sudo cp ppm /usr/bin
-echo "done."
