@@ -44,7 +44,7 @@ deactivate                              # deactivate python environment
 **Alternatively, you could use [ppm](https://github.com/Jiangyiqun/ppm) (no available for Windows)**
 
 ```shell
-ppm new-package
+ppm install new-package
 ```
 
 ## References
