@@ -3,6 +3,8 @@
 - Author: Jack Jiang
 - Date: Jul. 2019
 
+[![](https://img.shields.io/badge/managed%20by-ppm-red)](https://jiangyiqun.github.io/ppm/)
+
 In this fullstack tutorial, I will implement a simple CRUD App, including:
 - A [Frontend](https://jiangyiqun.github.io/fullstack_tutorial/) using [JavaScript(React)](https://reactjs.org/)
 - A [Backend](./docs/README.md) using [Python(Flask)](https://flask.palletsprojects.com/en/1.1.x/)
@@ -46,7 +48,8 @@ deactivate                              # deactivate python environment
 **Alternatively, you could use [ppm](https://github.com/Jiangyiqun/ppm) (no available for Windows)**
 
 ```shell
-ppm create-flask-app backend     # create basic flask app
+mkdir backend
 cd backend
-ppm install flask-cors           # install essitial modules
+ppm install
+ppm install flask flask-cors           # install essitial modules
 ```
