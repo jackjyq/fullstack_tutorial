@@ -1,9 +1,10 @@
 # Flask Backend Deployment
 
-- Author: Jack Jiang
-- Date: Jul. 2019
+THe backend uses [Model](./dbms) to implement [API](../docs), have a look at [main.py](./main.py)
 
-## Setup Server
+## Run existing Backend Server
+
+### Setup Server
 
 ```shell
 python3 -m venv python_modules          # create python environment
@@ -18,7 +19,7 @@ deactivate                              # deactivate python environment
 ppm install
 ```
 
-## Run Server
+### Run Server
 
 ```shell 
 source ./python_modules/bin/activate    # activate python environment
@@ -32,7 +33,7 @@ deactivate                              # deactivate python environment
 ppm start
 ```
 
-## Install new-package
+### Install new-package
 
 ```shell
 source ./python_modules/bin/activate    # activate python environment
@@ -46,6 +47,34 @@ deactivate                              # deactivate python environment
 ```shell
 ppm install new-package
 ```
+
+## Create Backend from scratch
+
+### Prerequisite
+
+- [Anaconda (Python 3)](https://www.anaconda.com/distribution/#download-section)
+
+### Create Flask App
+
+```shell
+mkdir backend
+cd backend
+python3 -m venv python_modules          # create python environment
+source ./python_modules/bin/activate    # activate python environment
+pip install flask flask-cors     		# install essitial modules
+python -m pip freeze > package-lock.txt		# save dependencies to package.txt
+deactivate                              # deactivate python environment
+```
+
+**Alternatively, you could use [ppm](https://github.com/Jiangyiqun/ppm) (no available for Windows)**
+
+```shell
+mkdir backend
+cd backend
+ppm install
+ppm install flask flask-cors           # install essitial modules
+```
+
 
 ## References
 
