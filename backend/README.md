@@ -8,7 +8,7 @@
 ```shell
 python3 -m venv python_modules          # create python environment
 source ./python_modules/bin/activate    # activate python environment
-python3 -m pip install -r package.txt   # install python modules from package.txt
+python3 -m pip install -r package-lock.txt   # install python modules from package.txt
 deactivate                              # deactivate python environment
 ```
 
@@ -36,8 +36,8 @@ ppm start
 
 ```shell
 source ./python_modules/bin/activate    # activate python environment
-pip install new-package					# install new-package
-python -m pip freeze > package.txt		# save new-package to package.txt
+pip install new-package				# install new-package
+python -m pip freeze > package-lock.txt		# save new-package to package.txt
 deactivate                              # deactivate python environment
 ```
 
