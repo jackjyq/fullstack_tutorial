@@ -1,3 +1,9 @@
+// This is only one class called App
+// the constructor() does initialzation job
+// handleChange() is triggered when input changes
+// handleClick() is triggered when clicking any buttons
+// render() inlude the page desgin
+// you may want to start read render() first
 import React from 'react';
 import { 
     Row, Col, Button,
@@ -8,6 +14,7 @@ import {
 import './App.css';
 
 class App extends React.Component {
+  // ######################### initialzation ###########################
   constructor(props) {
     super(props);
     this.state = {
@@ -21,8 +28,8 @@ class App extends React.Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
-
-handleChange(event) {
+  // ######################### input handler ###########################
+  handleChange(event) {
     const inputId = event.target.id;
     const inputValue = event.target.value;
     let state = this.state;
@@ -30,7 +37,7 @@ handleChange(event) {
     this.setState(state);
   }
 
-
+  // ######################### click handler ###########################
   handleClick(event) {
     const serverUrl = "http://localhost:5000/keys";
     const debugUrl = "http://localhost:5000/debug";
@@ -201,7 +208,7 @@ handleChange(event) {
     }
   }
 
-
+  // ######################### page design ###########################
   render() {
     const state = this.state;
     return (
