@@ -1,4 +1,4 @@
-// This is only one class called App
+// There is only one class called App
 // the constructor() does initialzation job
 // handleChange() is triggered when input changes
 // handleClick() is triggered when clicking any buttons
