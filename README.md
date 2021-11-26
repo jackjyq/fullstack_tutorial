@@ -10,6 +10,6 @@ In this fullstack tutorial, I will implement a simple CRUD App, including:
 
 One of the fancy part of web app is that it is seperated by layers.
 
-- The top layer is [frontend](./frontend), which utilises the [APIs](./docs) provided by backend. When implementing [frontend](./frontend), we can assume that all the [APIs](./docs) has already been implemented.
-- The middle layer is [backend](./backend), which utilises the functions in [Model layer](./backend/dbms) to manipuate database. When implementing [backend](./backend), we assume that all the functions in [Model layer](./backend/dbms) has already been implemented.
-- The bottom DB structure can is [](./resources/ER_design.jpg)
+- The top layer is [frontend](./frontend), which is a React based project. 
+- The middle layer is [backend](./backend), which is a flask based python project.
+- The bottom DB is a mysql Project, the ER diagram can be found here. [ER](./resources/ER_design.jpg)
