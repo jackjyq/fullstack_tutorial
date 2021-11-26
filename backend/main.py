@@ -30,7 +30,7 @@ mysql = MySQL(app)
 def create_name():
     # # read Data
     data_json = request.data
-    print(data_json)
+    # print(data_json)
     data_dict = json.loads(data_json)
     customerID =  data_dict['customerID']
     cname = data_dict['name']
@@ -38,12 +38,12 @@ def create_name():
     # # Execute SQL
     cur = mysql.connection.cursor()
     try:
-        cur.execute("INSERT INTO Customers(key_,name, lastName) VALUES (%s,%s)", (customerID,cname, lname))
+        cur.execute("INSERT INTO Customers(key_,name, lastName) VALUES (%s,%s)", (customerID,cname))
         mysql.connection.commit()
         # NB : you won't get an IntegrityError when reading
     except Exception as e:
         print(e)
-        return jsonify({"errorMsg": "BAD REQUEST"}), 400
+        return "BAD REQUEST", 400
     cur.close()
     # # succeed
     return "SUCCESS", 200
@@ -51,47 +51,65 @@ def create_name():
 
 ############################## read name ###############################
 @app.route('/customer/<customerID>', methods = ["GET"])
-def read_customers(key):
+def read_customers(customerID):
     cur = mysql.connection.cursor()
     try:
-        cur.execute("SELECT * Customers WHERE key_ =  %s", (key))
+        cur.execute("SELECT * Customers WHERE key_ =  %s", (customerID))
         mysql.connection.commit()
         # NB : you won't get an IntegrityError when reading
     except Exception as e:
         print(e)
-        return jsonify({"errorMsg": "BAD REQUEST"}), 400
+        return "BAD REQUEST", 400
     cur.close()
 
 
-    return "jsonify(value)", 200
+    return "SUCCESS", 200
 
 
 
 ############################## update name #############################
 @app.route('/customer/<customerID>', methods = ["PUT"])
-def update_name(key):
-    value = json.loads(request.data)
-    # bad request
-    if (not model.update(key, value)):
-        return jsonify({"key": key, "errorMsg": "bad request"}), 400
-    # succeed
-    value["key"] = key
-    return jsonify(value), 200
+def update_name(customerID):
+    data_json = request.data
+    # print(data_json)
+    data_dict = json.loads(data_json)
+    customerID =  data_dict['customerID']
+    cname = data_dict['name']
+
+    # # Execute SQL
+    cur = mysql.connection.cursor()
+    try:
+        ## USE TRANSACTIONS
+        cur.execute("UPDATAE Customers(key_,name, lastName) VALUES (%s,%s)", (customerID,cname))
+        mysql.connection.commit()
+        # NB : you won't get an IntegrityError when reading
+    except Exception as e:
+        print(e)
+        return "BAD REQUEST", 400
+    cur.close()
+    return "SUCCESS", 200
 
 
 ############################## delete name #############################
 @app.route('/customer/<customerID>', methods = ["DELETE"])
 def delete_name(key):
     # not found
-    value = model.read(key)
-    if not value:
-        return jsonify({"key": key, "errorMsg": "not found"}), 404
-    # not found
-    if (not model.delete(key)):
-        return jsonify({"key": key, "errorMsg": "not found"}), 404
-    # succeed
-    value["key"] = key
-    return jsonify(value), 200
+    data_json = request.data
+    # print(data_json)
+    data_dict = json.loads(data_json)
+    customerID =  data_dict['customerID']
+
+    # # Execute SQL
+    cur = mysql.connection.cursor()
+    try:
+        cur.execute("DELETE Customers WHERE CustomerID = %s", (customerID))
+        mysql.connection.commit()
+        # NB : you won't get an IntegrityError when reading
+    except Exception as e:
+        print(e)
+        return "BAD REQUEST", 400
+    cur.close()
+    return "SUCCESS", 200
 
 
 ############################# Debug Method #############################
