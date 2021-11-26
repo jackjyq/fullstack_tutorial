@@ -8,6 +8,8 @@
     "gh-pages": "^2.2.0",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
+    "react-router": "^6.0.2",
+    "react-router-dom": "^6.0.2",
     "react-scripts": "3.0.1",
     "reactstrap": "^8.9.0"
   },

@@ -21,21 +21,6 @@ npm start
 ```shell
 npm install --save new-package
 ```
-___
-
-## Create Frontend from scratch
-
-### Prerequisite
-
-- [Node.js](https://nodejs.org)
-
-### Create React App
-
-```shell
-npx create-react-app frontend     # create basic react app
-cd frontend
-npm install --save reactstrap     # install essitial modules
-```
 
 
 ## References
