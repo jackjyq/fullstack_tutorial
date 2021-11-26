@@ -2,7 +2,7 @@
 
 In this fullstack tutorial, I will implement a simple CRUD App, including:
 - A [Frontend](./frontend/README.md) using [React.js](https://reactjs.org/)
-- A [Backend](./docs/README.md) using [Python(Flask)](https://flask.palletsprojects.com/en/1.1.x/)
+- A [Backend](./backend/README.md) using [Python(Flask)](https://flask.palletsprojects.com/en/1.1.x/)
 - Using the MySQL Database and [flask_mysqldb](https://flask-mysqldb.readthedocs.io/en/latest/) to Connect
 
 
