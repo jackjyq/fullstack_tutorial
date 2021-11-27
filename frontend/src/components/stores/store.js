@@ -15,7 +15,7 @@ import './store.css';
 
 class store extends React.Component {
   // ######################### initialzation ###########################
-  store(props) {
+  constructor(props) {
     super(props);
     this.state = {
         "storeID": "",
