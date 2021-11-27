@@ -3,6 +3,7 @@ import { NavLink, Routes, Route } from 'react-router-dom';
 import './App.css';
 import Customers from './components/customers/customer.js'
 import Stores from './components/stores/store.js'
+import Products from './components/stores/product.js'
 
 const App = () => (
   <div className='app'>
@@ -44,6 +45,7 @@ const Main = () => (
     <Route exact path='/customer' element={<Customers/>}></Route>
     {/*<Route exact path='/store' element={<Contact/>}></Route>*/}
     <Route exact path='/store' element={<Stores/>}></Route>
+    <Route exact path='/product' element={<Products/>}></Route>
   </Routes>
 );
 

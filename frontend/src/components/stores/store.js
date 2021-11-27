@@ -139,7 +139,7 @@ class store extends React.Component {
 
     // ######################### update name ###########################
     else if (buttonId === "update") {
-      fetch(serverUrl + "/" +  state["customerID"], {
+      fetch(serverUrl + "/" +  state["storeID"], {
         method: 'PUT',
         body: JSON.stringify({
           //"name": state["name"],
@@ -161,7 +161,7 @@ class store extends React.Component {
       .then(object => {
           // console.log(object);
           if (state["httpStatus"] < 300) {
-            state["customerID"]= object["customerID"];
+            state["storeID"]= object["storeID"];
             //state["name"]= object["name"];
             state["state"]= object["state"];
             state["city"] = object["city"];
@@ -252,7 +252,7 @@ class store extends React.Component {
         <CardHeader tag="h3">Add Stores</CardHeader>
         <CardBody>
           <InputGroup>
-            <InputGroupAddon addonType="prepend">CustomerID:</InputGroupAddon>
+            <InputGroupAddon addonType="prepend">StoreID:</InputGroupAddon>
             <Input value={state["storeID"]} onChange={this.handleChange} id="storeID"/>
           </InputGroup> <br />
           {/*<InputGroup>*/}
