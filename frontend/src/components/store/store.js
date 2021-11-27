@@ -11,7 +11,7 @@ import {
     Input, InputGroup, InputGroupAddon,
     }
     from 'reactstrap';
-import './customer.css';
+import './store.css';
 
 class store extends React.Component {
   // ######################### initialzation ###########################
@@ -42,7 +42,7 @@ class store extends React.Component {
 
   // ######################### click handler ###########################
   handleClick(event) {
-    const serverUrl = "http://localhost:5000/customer";
+    const serverUrl = "http://localhost:5000/store";
     const debugUrl = "http://localhost:5000/debug";
     const buttonId = event.target.id;
     let state = this.state
@@ -51,8 +51,8 @@ class store extends React.Component {
       fetch(serverUrl, {
         method: 'POST',
         body: JSON.stringify({
-            "customerID": state["customerID"],
-            "name": state["name"],
+            "storeID": state["storeID"],
+            //"name": state["name"],
             "state": state["state"],
             "city" : state["city"],
             "street":state["street"],
@@ -71,8 +71,8 @@ class store extends React.Component {
       .then(object => {
           // console.log(object);
           if (state["httpStatus"] < 300) {
-            state["customerID"]= object["customerID"];
-            state["name"]= object["name"];
+            state["storeID"]= object["storeID"];
+            //state["name"]= object["name"];
             state["state"]= object["state"];
             state["city"] = object["city"];
             state["street"]=object["street"];
@@ -82,8 +82,8 @@ class store extends React.Component {
       })
       .catch(error => {
         console.log(error);
-        state["customerID"]= "";
-        state["name"]= "";
+        state["storeID"]= "";
+        //state["name"]= "";
         state["state"]= "";
         state["city"] = "";
         state["street"]= "";
@@ -95,7 +95,7 @@ class store extends React.Component {
 
     // ########################## read name ############################
     else if (buttonId === "read") {
-      fetch(serverUrl + "/" + state["customerID"], {
+      fetch(serverUrl + "/" + state["storeID"], {
         method: 'GET'
       })
       .then(response => {
@@ -110,14 +110,14 @@ class store extends React.Component {
       .then(object => {
           // console.log(object);
           if (state["httpStatus"] < 300) {
-            state["customerID"]= object["customerID"];
-            state["name"]= object["name"];
+            state["storeID"]= object["storeID"];
+            //state["name"]= object["name"];
             state["state"]= object["state"];
             state["city"] = object["city"];
             state["street"]=object["street"];
             state["zip"]= object["zip"];
           } else {
-            state["name"]= "";
+            //state["name"]= "";
             state["state"]= "";
             state["city"] = "";
             state["street"]= "";
@@ -127,7 +127,7 @@ class store extends React.Component {
       })
       .catch(error => {
         // console.log(error);
-        state["name"]= "";
+        //state["name"]= "";
         state["state"]= "";
         state["city"] = "";
         state["street"]= "";
@@ -142,7 +142,7 @@ class store extends React.Component {
       fetch(serverUrl + "/" +  state["customerID"], {
         method: 'PUT',
         body: JSON.stringify({
-          "name": state["name"],
+          //"name": state["name"],
           "state": state["state"],
           "city" : state["city"],
           "street":state["street"],
@@ -162,7 +162,7 @@ class store extends React.Component {
           // console.log(object);
           if (state["httpStatus"] < 300) {
             state["customerID"]= object["customerID"];
-            state["name"]= object["name"];
+            //state["name"]= object["name"];
             state["state"]= object["state"];
             state["city"] = object["city"];
             state["street"]=object["street"];
@@ -179,7 +179,7 @@ class store extends React.Component {
 
     // ######################### delete name ###########################
     else if (buttonId === "delete") {
-      fetch(serverUrl + "/" + state["customerID"], {
+      fetch(serverUrl + "/" + state["storeID"], {
         method: 'DELETE'
       })
       .then(response => {
@@ -194,8 +194,8 @@ class store extends React.Component {
       .then(object => {
           // console.log(object);
           if (state["httpStatus"] < 300) {
-            state["customerID"]= object["customerID"];
-            state["name"]= object["name"];
+            state["storeID"]= object["storeID"];
+            //state["name"]= object["name"];
             state["state"]= object["state"];
             state["city"] = object["city"];
             state["street"]=object["street"];
@@ -233,7 +233,7 @@ class store extends React.Component {
       })
       .catch(error => {
         // console.log(error);
-        state["name"]= "";
+        //state["name"]= "";
         state["state"]= "";
         state["city"] = "";
         state["street"]= "";
@@ -253,12 +253,12 @@ class store extends React.Component {
         <CardBody>
           <InputGroup>
             <InputGroupAddon addonType="prepend">CustomerID:</InputGroupAddon>
-            <Input value={state["customerID"]} onChange={this.handleChange} id="customerID"/>
+            <Input value={state["storeID"]} onChange={this.handleChange} id="storeID"/>
           </InputGroup> <br />
-          <InputGroup>
-            <InputGroupAddon addonType="prepend">Name: </InputGroupAddon>
-            <Input value={state["name"]} onChange={this.handleChange} id="name"/>
-          </InputGroup> <br />
+          {/*<InputGroup>*/}
+          {/*  <InputGroupAddon addonType="prepend">Name: </InputGroupAddon>*/}
+          {/*  <Input value={state["name"]} onChange={this.handleChange} id="name"/>*/}
+          {/*</InputGroup> <br />*/}
           <div> Main Address </div> <br />
           <InputGroup>
             <InputGroupAddon addonType="prepend">State: </InputGroupAddon>
@@ -290,4 +290,4 @@ class store extends React.Component {
   }
 }
 
-export default customer;
+export default store;
