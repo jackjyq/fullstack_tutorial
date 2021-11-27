@@ -3,7 +3,7 @@ import { NavLink, Routes, Route } from 'react-router-dom';
 import './App.css';
 import Customers from './components/customers/customer.js'
 import Stores from './components/stores/store.js'
-import Products from './components/stores/product.js'
+import Products from './components/products/product.js'
 
 const App = () => (
   <div className='app'>
