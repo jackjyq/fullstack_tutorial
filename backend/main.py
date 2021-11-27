@@ -2,14 +2,43 @@
 # Author: Yiyuan Wang
 # Description:
 #   an simple flask backend
-from flask import Flask, json, jsonify, request
+from flask import Flask, json, jsonify, request, render_template
 from flask_cors import CORS
 from flask_mysqldb import MySQL
-############################ Choose Models ############################
+from flask_jwt import JWT, jwt_required, current_identity
+from werkzeug.security import safe_str_cmp
+
+############################ Login Classes ############################
 # from dbms.json_db.model import Model
 # from dbms.dict_db.model import Model
+class User(object):
+    def __init__(self, id, username, password):
+        self.id = id
+        self.username = username
+        self.password = password
+
+    def __str__(self):
+        return "User(id='%s')" % self.id
+
+users = [
+    User(1, 'test', 'testLogin'),
+    User(2, 'yiyuan', 'yiyuanwang'),
+]
+
+username_table = {u.username: u for u in users}
+userid_table = {u.id: u for u in users}
+
+def authenticate(username, password):
+    user = username_table.get(username, None)
+    if user and safe_str_cmp(user.password.encode('utf-8'), password.encode('utf-8')):
+        return user
+
+def identity(payload):
+    user_id = payload['identity']
+    return userid_table.get(user_id, None)
 
 ############################ Initialization ############################
+
 app = Flask(__name__)
 # this essitial for Cross Origin Resource Sharing with React frontend
 # https://flask-cors.readthedocs.io/en/latest/
@@ -21,6 +50,20 @@ app.config['MYSQL_USER'] = 'root'
 app.config['MYSQL_PASSWORD'] = '123456'
 app.config['MYSQL_DB'] = 'FinalProj'
 mysql = MySQL(app)
+
+app.config['SECRET_KEY'] = 'super-secret'
+jwt = JWT(app, authenticate, identity)
+
+############################ Login ############################
+
+@app.route('/')
+def index():
+    return render_template("App.js")
+
+@app.route('/protected')
+@jwt_required()
+def protected():
+    return '%s' % current_identity
 
 
 ##########################  API Implementation #########################
