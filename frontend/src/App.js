@@ -2,6 +2,8 @@ import React from 'react';
 import { NavLink, Routes, Route } from 'react-router-dom';
 import './App.css';
 import Customers from './components/customers/customer.js'
+import Login from './components/login/login.js'
+
 
 const App = () => (
   <div className='app'>
@@ -14,7 +16,7 @@ const App = () => (
 const Navigation = () => (
   <nav>
     <ul>
-      <li><NavLink exact activeClassName="current" to='/'>Home</NavLink></li>
+      <li><NavLink exact activeClassName="current" to='/'>Login</NavLink></li>
       <li><NavLink exact activeClassName="current" to='/customer'>customer</NavLink></li>
       <li><NavLink exact activeClassName="current" to='/store'>Store</NavLink></li>
     </ul>
@@ -39,7 +41,7 @@ const Contact = () => (
 
 const Main = () => (
   <Routes>
-    <Route exact path='/' element={<Home/>}></Route>
+    <Route exact path='/' element={<Login/>}></Route>
     <Route exact path='/customer' element={<Customers/>}></Route>
     <Route exact path='/store' element={<Contact/>}></Route>
   </Routes>
