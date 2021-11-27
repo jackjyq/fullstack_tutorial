@@ -17,7 +17,7 @@ const Navigation = () => (
   <nav>
     <ul>
       <li><NavLink exact activeClassName="current" to='/'>Home</NavLink></li>
-      <li><NavLink exact activeClassName="current" to='/customer'>customer</NavLink></li>
+      <li><NavLink exact activeClassName="current" to='/customer'>Customer</NavLink></li>
       <li><NavLink exact activeClassName="current" to='/store'>Store</NavLink></li>
       <li><NavLink exact activeClassName="current" to='/product'>Product</NavLink></li>
     </ul>
