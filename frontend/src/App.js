@@ -3,6 +3,7 @@ import { NavLink, Routes, Route } from 'react-router-dom';
 import './App.css';
 import Customers from './components/customers/customer.js'
 import Login from './components/login/login.js'
+import PrivateRoutes from './components/privateRoutes/PrivateRoutes.js'
 
 
 const App = () => (
@@ -23,14 +24,6 @@ const Navigation = () => (
   </nav>
 );
 
-const Home = () => (
-  <div className='home'>
-    <h1>Welcome to The E-Commerce System</h1>
-    <p> Feel free to explore this site</p>
-  </div>
-);
-
-
 
 const Contact = () => (
   <div className='contact'>
@@ -42,7 +35,7 @@ const Contact = () => (
 const Main = () => (
   <Routes>
     <Route exact path='/' element={<Login/>}></Route>
-    <Route exact path='/customer' element={<Customers/>}></Route>
+    <Route exact path='/customer' element={ <Customers/>}></Route>
     <Route exact path='/store' element={<Contact/>}></Route>
   </Routes>
 );
