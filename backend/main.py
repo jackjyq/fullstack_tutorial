@@ -27,7 +27,7 @@ mysql = MySQL(app)
 # https://github.com/Jiangyiqun/fullstack_tutorial/tree/master/documentation
 ############################## create name #############################
 @app.route('/customer', methods = ["POST"])
-def create_name():
+def create_customer():
     # # read Data
     data_json = request.data
     # print(data_json)
@@ -61,8 +61,6 @@ def read_customers(customerID):
         print(e)
         return "BAD REQUEST", 400
     cur.close()
-
-
     return "SUCCESS", 200
 
 
