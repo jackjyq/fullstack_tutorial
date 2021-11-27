@@ -249,7 +249,7 @@ class store extends React.Component {
     const state = this.state;
     return (
     <Row> <Col sm={{ size: 6, offset: 3 }}> <Card className='mt-5'>
-        <CardHeader tag="h3">Add Customers</CardHeader>
+        <CardHeader tag="h3">Add Stores</CardHeader>
         <CardBody>
           <InputGroup>
             <InputGroupAddon addonType="prepend">CustomerID:</InputGroupAddon>
