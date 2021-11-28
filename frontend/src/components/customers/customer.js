@@ -24,6 +24,7 @@ class customer extends React.Component {
         "City" :"",
         "Street":"",
         "ZIP":"",
+        "Phone" :"",
         "httpStatus": 0,
         "errorMsg": ""
         };
@@ -53,10 +54,11 @@ class customer extends React.Component {
         body: JSON.stringify({
             "customerID": state["customerID"],
             "name": state["name"],
-            "state": state["state"],
-            "city" : state["city"],
-            "street":state["street"],
-            "zip": state["zip"],
+            "state": state["State"],
+            "city" : state["City"],
+            "street":state["Street"],
+            "phone" : state["Phone"],
+            "zip": state["ZIP"],
             })
       })
       .then(response => {
@@ -73,10 +75,11 @@ class customer extends React.Component {
           if (state["httpStatus"] < 300) {
             state["customerID"]= object["customerID"];
             state["name"]= object["name"];
-            state["state"]= object["state"];
-            state["city"] = object["city"];
-            state["street"]=object["street"];
-            state["zip"]= object["zip"];
+            state["State"]= object["state"];
+            state["City"] = object["city"];
+            state["Street"]=object["street"];
+            state["ZIP"]= object["zip"];
+            state["Phone"]= object["phone"];
           }
           this.setState(state);
       })
@@ -84,10 +87,11 @@ class customer extends React.Component {
         console.log(error);
         state["customerID"]= "";
         state["name"]= "";
-        state["state"]= "";
-        state["city"] = "";
-        state["street"]= "";
-        state["zip"]= "";
+        state["State"]= "";
+        state["City"] = "";
+        state["Street"]= "";
+        state["ZIP"]= "";
+        state["Phone"] = "";
         state["errorMsg"] = error;
         this.setState(state);
       });    
@@ -112,26 +116,26 @@ class customer extends React.Component {
           if (state["httpStatus"] < 300) {
             state["customerID"]= object["customerID"];
             state["name"]= object["name"];
-            state["state"]= object["state"];
-            state["city"] = object["city"];
-            state["street"]=object["street"];
-            state["zip"]= object["zip"];
+            state["State"]= object["state"];
+            state["City"] = object["city"];
+            state["Street"]=object["street"];
+            state["ZIP"]= object["zip"];
           } else {
             state["name"]= "";
-            state["state"]= "";
-            state["city"] = "";
-            state["street"]= "";
-            state["zip"]= "";
+            state["State"]= "";
+            state["City"] = "";
+            state["Street"]= "";
+            state["ZIP"]= "";
           }
           this.setState(state);
       })
       .catch(error => {
         // console.log(error);
         state["name"]= "";
-        state["state"]= "";
-        state["city"] = "";
-        state["street"]= "";
-        state["zip"]= "";
+        state["State"]= "";
+        state["City"] = "";
+        state["Street"]= "";
+        state["ZIP"]= "";
         state["errorMsg"] = error;
         this.setState(state);
       });    
@@ -143,10 +147,11 @@ class customer extends React.Component {
         method: 'PUT',
         body: JSON.stringify({
           "name": state["name"],
-          "state": state["state"],
-          "city" : state["city"],
-          "street":state["street"],
-          "zip": state["zip"],
+          "state": state["State"],
+          "city" : state["City"],
+          "street":state["Street"],
+          "phone": state["Phone"],
+          "zip": state["ZIP"],
             })
       })
       .then(response => {
@@ -199,6 +204,7 @@ class customer extends React.Component {
             state["state"]= object["state"];
             state["city"] = object["city"];
             state["street"]=object["street"];
+            state["Phone"] = object["phone"];
             state["zip"]= object["zip"];
           }
           this.setState(state);
@@ -249,15 +255,19 @@ class customer extends React.Component {
     const state = this.state;
     return (
     <Row> <Col sm={{ size: 6, offset: 3 }}> <Card className='mt-5'>
-        <CardHeader tag="h3">Add Customers</CardHeader>
+        <CardHeader tag="h3">Welcome</CardHeader>
         <CardBody>
-          <InputGroup>
+          {/* <InputGroup>
             <InputGroupAddon addonType="prepend">CustomerID:</InputGroupAddon>
             <Input value={state["customerID"]} onChange={this.handleChange} id="customerID"/>
-          </InputGroup> <br />
+          </InputGroup> <br /> */}
           <InputGroup>
             <InputGroupAddon addonType="prepend">Name: </InputGroupAddon>
             <Input value={state["name"]} onChange={this.handleChange} id="name"/>
+          </InputGroup> <br />
+          <InputGroup>
+            <InputGroupAddon addonType="prepend">Phone:</InputGroupAddon>
+            <Input value={state["Phone"]} onChange={this.handleChange} id="phone"/>
           </InputGroup> <br />
           <div> Main Address </div> <br />
           <InputGroup>
