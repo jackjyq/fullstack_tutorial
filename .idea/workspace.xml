@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="24fedbaf-f7df-44f1-900e-3e732e5bdbf5" name="Changes" comment="product2">
-      <change beforePath="$PROJECT_DIR$/frontend/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.js" afterDir="false" />
-    </list>
+    <list default="true" id="24fedbaf-f7df-44f1-900e-3e732e5bdbf5" name="Changes" comment="product2" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -17,7 +15,9 @@
     <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="ProjectId" id="21TpUCqKGYo9TdtzRVj80BSp4c9" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -144,6 +144,7 @@
     <MESSAGE value="have a try" />
     <MESSAGE value="product" />
     <MESSAGE value="product2" />
-    <option name="LAST_COMMIT_MESSAGE" value="product2" />
+    <MESSAGE value="add productlist" />
+    <option name="LAST_COMMIT_MESSAGE" value="add productlist" />
   </component>
 </project>
